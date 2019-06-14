@@ -24,23 +24,39 @@ app.use(express.static("public"));
 const MongoClient = require("mongodb").MongoClient;
 const MONGODB_URI= 'mongodb://172.17.0.1:32775';
 
-MongoClient.connect(MONGODB_URI, (err, client) => {
-  if (err) {
-    console.log(`Failed to connect to mongo on: ${MONGODB_URI}`)
-  }
-  console.log("Connected to mongodb")
+// MongoClient.connect(MONGODB_URI, (err, client) => {
+//   if (err) {
+//     console.log(`Failed to connect to mongo on: ${MONGODB_URI}`)
+//   }
+//   console.log("Connected to mongodb")
   
-  const db = client.db('tweeter');
-  const collection = db.collection('users');
+//   const db = client.db('tweeter');
+//   const collection = db.collection('users');
   
-  collection.find().toArray((err, docs) => {
-    const DataHelpers = require("./lib/data-helpers.js")({tweets: docs, collection:collection});
-    const tweetsRoutes = require("./routes/tweets")(DataHelpers);
-    app.use("/tweets", tweetsRoutes);
-    app.listen(PORT, () => {
-      console.log("Example app listening on port " + PORT);
-    });
+//   collection.find().toArray((err, docs) => {
+//     const DataHelpers = require("./lib/data-helpers.js")({tweets: docs, collection:collection});
+//     const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+//     app.use("/tweets", tweetsRoutes);
+//     app.listen(PORT, () => {
+//       console.log("Example app listening on port " + PORT);
+//     });
+//   })
+  
+//   client.close()
+// })
+
+MongoClient.connect(MONGODB_URI)
+  .then((result) => {
+    const db = result.db('tweeter');
+    const collection = db.collection('users');
+  
+    collection.find().toArray((err, docs) => {
+      const DataHelpers = require("./lib/data-helpers.js")({tweets: docs, collection:collection});
+      const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+      app.use("/tweets", tweetsRoutes);
+      app.listen(PORT, () => {
+        console.log("Example app listening on port " + PORT);
+      });
+    })
   })
-  
-  //client.close()
-})
+  .catch(err => console.log(err))

@@ -13,5 +13,4 @@ module.exports = function makeDataHelpers(db) {
         callback(null, db.tweets)
       }
     }
-
 };
