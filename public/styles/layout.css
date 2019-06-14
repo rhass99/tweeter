@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,700,700i&display=swap');
 /*
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  * https://css-tricks.com/international-box-sizing-awareness-day/
@@ -8,6 +9,7 @@ html {
 }
 *, *:before, *:after {
   box-sizing: inherit;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 /*
@@ -23,3 +25,144 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ body {
+  margin: 0;
+  color: #244751;
+  background-color: #eee;
+  font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
+}
+
+main.container {
+  padding-top: 140px;
+  top: 0;
+  width: 500px;
+  background-color: white;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* New tweet section */
+section.compose-tweet {
+  background-color: rgb(219, 215, 215);
+  border-width: 1px;
+  padding: 1em;
+  width: 400px;
+  border-style: solid;
+  align-self: center;
+  border-radius: 6px;
+}
+
+section.compose-tweet .heading {
+  padding: 0;
+  margin-bottom: 0;
+  margin-top:0;
+}
+
+section.compose-tweet hr{
+  margin-top:1px;
+  margin-bottom: 1.5em;
+}
+
+.counter {
+  margin-top: 2px;
+  float: right;
+}
+
+.counter.red {
+  color: red;
+}
+
+#compose-tweet-input {
+  padding: 0.5em;
+  height: 2em;
+  max-width: 100%;
+  min-height: 4em;
+  min-width: 100%;
+  width: 100%;
+}
+
+/* Full List of tweets 2nd item in main container */
+section.tweet-list {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* article containers */
+article.tweet-container {
+  align-self: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  float: left;
+  width: 400px;
+  margin-top: 2em;
+}
+
+/* tweet header container */
+article.tweet-container .tweet-header-container {
+  background-color: rgb(219, 215, 215);
+  margin: 0;
+  height: 4.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 10px;
+
+}
+
+/* tweet text */
+article.tweet-container .tweet-text-container {
+  height: 5em;
+  padding-left: 0.5em;
+  text-align: left;
+  display: table-cell;
+  vertical-align: middle ;
+}
+
+/* tweet hr */
+article.tweet-container hr {
+  margin: 0;
+  padding: 0;
+}
+
+/* tweet footer */
+article.tweet-container footer {
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+/* container div for h2 and img */
+article.tweet-container .tweet-header-container .article-header-flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/* article header contaianer items */
+/* name */
+article.tweet-container h2 {
+  padding: 0;
+  margin-top: 0.5em;
+}
+/* img */
+article.tweet-container  img {
+  border-radius: 6px;
+  margin: 0.5em;
+}
+/* handle */
+article.tweet-container h5 {
+  justify-content: flex-end;
+}
+
+/* remove compose */
+.red {
+  color: red;
+  margin: 0;
+  padding: 0;
+}

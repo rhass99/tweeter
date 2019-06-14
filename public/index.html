@@ -3,31 +3,47 @@
   <head>
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
-
     <!-- External CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
-
+  
   <body>
-
     <!-- Top nav bar (fixed) -->
-    <nav id="nav-bar">
-      <img class="logo" src="/images/bird.png" width="80px" height="80px">
-      <span class="header">Tweeter</span>
+    <nav class="nav-bar">
+      <div>
+        <img class="logo" src="/images/bird.png" >
+        <span class="header">Tweeter</span>
+      </div>
+      <button class="compose-button">Compose</button>
     </nav>
-
+    
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <section class="compose-tweet">
+        <h2 class="heading">Compose Tweet</h2>
+        <hr>
+        <form class="compose-tweet-form" action="/tweets" method="POST">
+          <textarea rows="5" cols="40" id="compose-tweet-input" name="text" 
+          placeholder="Tweet me..."></textarea><br>
+          <input id="tweet-input" type="submit" value="Tweet">
+          <div id="compose-tweet-error"></div>
+          <span class="counter">140</span>
+        </form>
+      </section>
+      <section class="tweet-list" id="tweets-container">
+
+      </section> 
     </main>
 
+    <script type="text/javascript" type="module" src="/scripts/app.js"></script>
+    <script type="text/javascript" type="module" src="/scripts/submit-new-tweet.js"></script>
+    <script type="text/javascript" type="module" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" type="module" src="/scripts/compose-button.js"></script>
+    <script type="text/javascript" type="module" src="/scripts/initial-tweets.js"></script>
   </body>
 </html>

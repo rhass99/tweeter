@@ -1,0 +1,37 @@
+.nav-bar {
+    position: fixed;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    width: 100%;
+    background-color: #00a087;
+    color: #e8fdff; 
+    display: flex; 
+    align-items: center;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    height: 90px;
+    top: 0;
+    bottom: 0;
+}
+
+.nav-bar div {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .logo {
+    height: auto;
+    width: 80px;   
+}
+
+.nav-bar .header {
+    display: flex;
+    padding-left: 10px;
+    font-size: 2em;
+    height: 80px;
+    align-items: center;
+   }
+
+.nav-bar .compose-button {
+    float: 'right';
+}

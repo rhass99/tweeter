@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // The in-memory database of tweets. It's a basic object with an array in it.
-const db = require("./lib/in-memory-db");
+//const db = require("./lib/in-memory-db");
 
 // The `data-helpers` module provides an interface to the database of tweets.
 // This simple interface layer has a big benefit: we could switch out the
@@ -20,15 +20,27 @@ const db = require("./lib/in-memory-db");
 //
 // Because it exports a function that expects the `db` as a parameter, we can
 // require it and pass the `db` parameter immediately:
-const DataHelpers = require("./lib/data-helpers.js")(db);
 
-// The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
-// so it can define routes that use it to interact with the data layer.
-const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+const MongoClient = require("mongodb").MongoClient;
+const MONGODB_URI= 'mongodb://172.17.0.1:32775';
 
-// Mount the tweets routes at the "/tweets" path prefix:
-app.use("/tweets", tweetsRoutes);
-
-app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
-});
+MongoClient.connect(MONGODB_URI, (err, client) => {
+  if (err) {
+    console.log(`Failed to connect to mongo on: ${MONGODB_URI}`)
+  }
+  console.log("Connected to mongodb")
+  
+  const db = client.db('tweeter');
+  const collection = db.collection('users');
+  
+  collection.find().toArray((err, docs) => {
+    const DataHelpers = require("./lib/data-helpers.js")({tweets: docs, collection:collection});
+    const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+    app.use("/tweets", tweetsRoutes);
+    app.listen(PORT, () => {
+      console.log("Example app listening on port " + PORT);
+    });
+  })
+  
+  //client.close()
+})
