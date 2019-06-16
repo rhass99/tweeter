@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const MongoClient = require("mongodb").MongoClient;
-const MONGODB_URI= 'mongodb://172.17.0.1:32770';
+const MONGODB_URI= 'mongodb://localhost:27017';
 
-MongoClient.connect(MONGODB_URI)
+MongoClient.connect(MONGODB_URI, { useNewUrlParser: true })
   .then((client) => {
     // Create a db from Mongo client Connection
     const db = client.db('tweeter');
