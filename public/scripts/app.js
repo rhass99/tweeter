@@ -1,37 +1,22 @@
 $(document).ready(function () {
+
+  // Loads all tweets from DB by sending
+  // AJAX GET '/tweets' back to server
   loadTweets();
+
+  // Toggles visitibility of add new tweet element
+  // Event listener on the Compose button on the header
+  $("#compose-new-tweet").addClass("display-none");
+  $(".compose-button").on( "click", () => {
+    $(".compose-tweet").slideToggle({
+      duration: 200,
+      complete: function() {
+        $("#compose-tweet-input").focus();
+      }
+    });
+  });
+  
 });
-
-// escape script tags
-function escape(str) {
-  var span = document.createElement('div');
-  span.appendChild(document.createTextNode(str));
-  return span.innerHTML;
-}
-
-// Creates a new Tweet Element 
-function createTweetElement(tweet) {
-  const { user, content, created_at } = tweet
-  const { name, avatars, handle } = user;
-  const { small } = avatars;
-  const { text } = content;
-
-  const $tweetElement = `
-  <article class="tweet-container">
-    <header class="tweet-header-container">
-      <div class="article-header-flex-container">
-        <img src=${small}>
-        <h2>${name}</h2>
-      </div>
-      <h5>${handle}</h5>
-    </header>
-    <p class="tweet-text-container">${escape(text)}</p>
-    <hr />
-    <footer class="tweet-footer-container">${created_at}</footer> 
-  </article>      
-  `
-  return $tweetElement;
-}
 
 // Creates a tweet list of elements from list of tweets
 function renderTweets(tweets) {
@@ -50,3 +35,5 @@ function loadTweets() {
   })
   .done((tweets) => renderTweets(tweets));
 }
+
+

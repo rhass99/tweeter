@@ -20,20 +20,15 @@ body {
   margin: 0;
   color: #244751;
   background-color: #eee;
+  font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- body {
-  margin: 0;
-  color: #244751;
-  background-color: #eee;
-  font-family: 'Roboto Condensed', sans-serif;
-  display: flex;
-}
-
+/* Container for compose tweet and tweet list of elements */
 main.container {
   padding-top: 140px;
   top: 0;
@@ -45,6 +40,7 @@ main.container {
 }
 
 /* New tweet section */
+/* Container */
 section.compose-tweet {
   background-color: rgb(219, 215, 215);
   border-width: 1px;
@@ -54,24 +50,27 @@ section.compose-tweet {
   align-self: center;
   border-radius: 6px;
 }
-
+/* Header */
 section.compose-tweet .heading {
   padding: 0;
   margin-bottom: 0;
   margin-top:0;
 }
-
+/* Line separator */
 section.compose-tweet hr{
   margin-top:1px;
   margin-bottom: 1.5em;
 }
-
+/* new tweet counter styles */
 .counter {
   margin-top: 2px;
   float: right;
 }
 
 .counter.red {
+  color: red;
+}
+.red {
   color: red;
 }
 
@@ -101,6 +100,7 @@ article.tweet-container {
   float: left;
   width: 400px;
   margin-top: 2em;
+  opacity: 0.5;
 }
 
 /* tweet header container */
@@ -112,7 +112,6 @@ article.tweet-container .tweet-header-container {
   flex-direction: row;
   justify-content: space-between;
   padding-right: 10px;
-
 }
 
 /* tweet text */
@@ -121,7 +120,11 @@ article.tweet-container .tweet-text-container {
   padding-left: 0.5em;
   text-align: left;
   display: table-cell;
-  vertical-align: middle ;
+  vertical-align: middle;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  hyphens: auto;
 }
 
 /* tweet hr */
@@ -130,8 +133,30 @@ article.tweet-container hr {
   padding: 0;
 }
 
+/* Tweet footer container */
+article.tweet-container .tweet-footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+/* Tweet footer icons container */
+article.tweet-container .tweet-footer-icons-container {
+  display: none;
+  align-items: center;
+  padding-right: 0.5em;
+}
+/* Hover effect for the tweet list */
+article.tweet-container:hover .tweet-footer-icons-container {
+  display: flex;
+}
+article.tweet-container:hover {
+  opacity: 1;
+}
+
+
 /* tweet footer */
 article.tweet-container footer {
+
   padding-left: 0.5em;
   padding-bottom: 0.5em;
   padding-top: 0.5em;
@@ -158,11 +183,4 @@ article.tweet-container  img {
 /* handle */
 article.tweet-container h5 {
   justify-content: flex-end;
-}
-
-/* remove compose */
-.red {
-  color: red;
-  margin: 0;
-  padding: 0;
 }
