@@ -6,13 +6,14 @@ const PORT          = 8080;
 const express       = require("express");
 const bodyParser    = require("body-parser");
 const app           = express();
+const dotenv        = require('dotenv').config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 // Mount static files directory
 app.use(express.static("public"));
 
 const MongoClient = require("mongodb").MongoClient;
-const MONGODB_URI= 'mongodb://localhost:27017';
+const MONGODB_URI= process.env.MONGODB_URI;
 
 MongoClient.connect(MONGODB_URI, { useNewUrlParser: true })
   .then((client) => {
