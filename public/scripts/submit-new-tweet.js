@@ -4,7 +4,7 @@ $(document).ready(function() {
   $("form").submit(function(e) {
     e.preventDefault();
     // Gets the text input from input
-    const $tweetValue = $('#compose-tweet-input').val();
+    const $tweetValue = $('#compose-tweet-input').val().trim();
     // Form validation for tweet length
     // to make sure value is not 0 or more than 140 character
     switch (true) {

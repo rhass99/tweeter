@@ -24,11 +24,11 @@ function createTweetElement(tweet) {
     <p class="tweet-text-container">${escape(text)}</p>
     <hr />
     <div class="tweet-footer-container">
-    <footer>${created_at}</footer>
+      <footer>${created_at}</footer>
     <div class="tweet-footer-icons-container">
-    <i class="material-icons">flag</i>
-    <i class="material-icons">sync</i>
-    <i class="material-icons">favorite</i>
+      <i class="material-icons">flag</i>
+      <i class="material-icons">sync</i>
+      <i class="material-icons">favorite</i>
     </div>
   </article>      
   `

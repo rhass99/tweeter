@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,700,700i&display=swap');
 /*
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- * https://css-tricks.com/international-box-sizing-awareness-day/
- * Do not modify these two selectors, please
- */
+* http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+* https://css-tricks.com/international-box-sizing-awareness-day/
+* Do not modify these two selectors, please
+*/
 html {
   box-sizing: border-box;
 }
@@ -13,8 +13,8 @@ html {
 }
 
 /*
- * Global layout stuff
- */
+* Global layout stuff
+*/
 
 body {
   margin: 0;
@@ -25,8 +25,8 @@ body {
 }
 
 /*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+* Additional CSS can be defined below or in other CSS files, as per instructions
+*/
 
 /* Container for compose tweet and tweet list of elements */
 main.container {
@@ -153,10 +153,8 @@ article.tweet-container:hover {
   opacity: 1;
 }
 
-
 /* tweet footer */
 article.tweet-container footer {
-
   padding-left: 0.5em;
   padding-bottom: 0.5em;
   padding-top: 0.5em;

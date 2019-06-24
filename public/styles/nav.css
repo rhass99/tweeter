@@ -1,37 +1,54 @@
+.compose-button {
+  opacity: 0.7;
+  background-color: #e7e7e7;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.compose-button:hover {
+  opacity: 1;
+}
+
 .nav-bar {
-    position: fixed;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    width: 100%;
-    background-color: #00a087;
-    color: #e8fdff; 
-    display: flex; 
-    align-items: center;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    height: 90px;
-    top: 0;
-    bottom: 0;
+  position: fixed;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  width: 100%;
+  background-color: #00a087;
+  color: #e8fdff; 
+  display: flex; 
+  align-items: center;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  height: 90px;
+  top: 0;
+  bottom: 0;
+  opacity: 1 !important;
 }
 
 .nav-bar div {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .nav-bar .logo {
-    height: auto;
-    width: 80px;   
+  height: auto;
+  width: 80px;   
 }
 
 .nav-bar .header {
-    display: flex;
-    padding-left: 10px;
-    font-size: 2em;
-    height: 80px;
-    align-items: center;
-   }
+  display: flex;
+  padding-left: 10px;
+  font-size: 2em;
+  height: 80px;
+  align-items: center;
+}
 
 .nav-bar .compose-button {
-    float: 'right';
+  float: 'right';
 }

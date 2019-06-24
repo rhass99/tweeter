@@ -11,8 +11,14 @@ const tweetsRoutes  = express.Router();
 const getTime = (startTime) => {
   let end = moment()
   let duration = moment.duration(end.diff(startTime))
-  let seconds = Math.round(duration.asSeconds());
-  return seconds
+  let seconds = Math.round(duration.asSeconds())
+  if ( seconds >= 3600 ) {
+    return `${Math.round(duration.asHours())} hours ago`
+  } else if (seconds < 3600 && seconds >= 60) {
+    return `${Math.round(duration.asMinutes())} minutes ago`
+  } else {
+    return `${seconds} seconds ago`
+  }
 }
 
 // Exports a /tweets subrouter to be mounted on the app
@@ -27,7 +33,7 @@ module.exports = function(DataHelpers) {
       } else {
         // Sends back tweets as a json object to the caller
         const newTweets = tweets.map((tweet) => {
-          tweet.created_at = `${getTime(tweet._id.getTimestamp())} Second ago`
+          tweet.created_at = getTime(tweet._id.getTimestamp())
           return tweet
         })
         res.json(newTweets);

@@ -4,7 +4,7 @@ $(document).ready(function () {
   // AJAX GET '/tweets' back to server
   loadTweets();
 
-  // Toggles visitibility of add new tweet element
+  // TToggles visibility of add new tweet element
   // Event listener on the Compose button on the header
   $("#compose-new-tweet").addClass("display-none");
   $(".compose-button").on( "click", () => {
@@ -20,6 +20,7 @@ $(document).ready(function () {
 
 // Creates a tweet list of elements from list of tweets
 function renderTweets(tweets) {
+  $('#tweets-container').empty();
   tweets.forEach((entry) => {
     let $tweet = createTweetElement(entry);
     $('#tweets-container').prepend($tweet);

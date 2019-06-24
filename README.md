@@ -4,8 +4,8 @@ Tweeter is a simple, single-page Twitter clone.
 
 ## To Start
 
-1. Fork this repository, then clone your fork of this repository.
-2. Go to the file .env in the root directory
+1. Clone or Fork the repo
+2. Create .env in the root directory with .env.example as an example
 3. Change the MONGODB_URI Environment Variable to match the one you have in your $PATH
 3. Install dependencies using the `npm install` command.
 4. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
