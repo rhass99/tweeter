@@ -1,11 +1,19 @@
 "use strict";
 // Database helper functions
 const userHelper    = require("../lib/util/user-helper")
+const moment = require('moment')
 
 const express       = require('express');
 // Creates a sub router for mouting all tweets related routes
 // accessible with /tweets
 const tweetsRoutes  = express.Router();
+
+const getTime = (startTime) => {
+  let end = moment()
+  let duration = moment.duration(end.diff(startTime))
+  let seconds = Math.round(duration.asSeconds());
+  return seconds
+}
 
 // Exports a /tweets subrouter to be mounted on the app
 module.exports = function(DataHelpers) {
@@ -18,7 +26,11 @@ module.exports = function(DataHelpers) {
         res.status(500).json({ error: err.message });
       } else {
         // Sends back tweets as a json object to the caller
-        res.json(tweets);
+        const newTweets = tweets.map((tweet) => {
+          tweet.created_at = `${getTime(tweet._id.getTimestamp())} Second ago`
+          return tweet
+        })
+        res.json(newTweets);
       }
     });
   });
@@ -36,8 +48,7 @@ module.exports = function(DataHelpers) {
       user: user,
       content: {
         text: req.body.text
-      },
-      created_at: Date.now()
+      }
     };
     // Uses helper function to add a new tweet to db
     DataHelpers.saveTweet(tweet, (err) => {

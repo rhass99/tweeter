@@ -32,3 +32,4 @@ MongoClient.connect(MONGODB_URI, { useNewUrlParser: true })
   })
   // Catches errors to DB connection
   .catch(err => console.log(err))
+  
